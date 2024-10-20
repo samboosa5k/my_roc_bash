@@ -1,4 +1,4 @@
-app [main] { pf: platform "https://github.com/roc-lang/basic-cli/releases/download/0.15.0/SlwdbJ-3GR7uBWQo6zlmYWNYOxnvo8r6YABXD-45UOw.tar.br" }
+app [main] { pf: platform "../dependencies/basic-cli/platform/main.roc" }
 
 import pf.Stdin
 import pf.Stdout

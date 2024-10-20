@@ -11,7 +11,8 @@ source ./ci/get_roc_tarball.sh
 
 function init() {
     get_roc_tarball $TARBALL_URL "$TARBALL_PATH/$OUTPUT_FILENAME" &&
-        extract_roc_tarball "$TARBALL_PATH/$OUTPUT_FILENAME" $OUTPUT_DIR
+        extract_roc_tarball "$TARBALL_PATH/$OUTPUT_FILENAME" $OUTPUT_DIR &
+    git clone https://github.com/roc-lang/basic-cli.git $OUTPUT_DIR
 
     echo $(ls $OUTPUT_DIR)
 
