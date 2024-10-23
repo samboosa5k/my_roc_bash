@@ -1,14 +1,16 @@
 #!/bin/bash
 
 function compile() {
-    local roc_bin
+    local roc_cmd
+    local roc_cmd_exists
     local roc_src
 
-    roc_bin=$(find ./dependencies -name roc -type f | head -n 1)
+    roc_cmd="roc --prebuilt-platform"
     roc_src=$1
 
-    if [ -z "$roc_bin" ]; then
-        echo "Error: roc_bin is not set"
+    # check if roc_cmd resolves to a valid command
+    if ! roc_cmd_exists=$(command -v roc); then
+        echo "Error: roc command not found"
         return 1
     fi
 
@@ -19,10 +21,10 @@ function compile() {
 
     # Compile roc bash
 
-    echo "Roc binary: $roc_bin"
+    echo "Roc cmd: $roc_cmd"
     echo "Compiling roc bash: $roc_src"
 
-    $roc_bin $roc_src
+    roc --prebuilt-platform $roc_src
 
     return 0
 }
